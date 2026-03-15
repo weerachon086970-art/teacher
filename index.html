@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบบันทึกคะแนนภาษาไทย ป.1 | Thai Score Tracker</title>
+    <meta name="description" content="โปรแกรมบันทึกและคำนวณคะแนนวิชาภาษาไทย ระดับชั้นประถมศึกษาปีที่ 1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <div class="logo-area">
+                    <img src="cartoon.png" alt="Cute Cartoon Students" class="header-character">
+                    <div class="logo-text">
+                        <span class="emoji">📖</span>
+                        <h1>ระบบบันทึกคะแนนภาษาไทย ป.1</h1>
+                    </div>
+                </div>
+                <div class="flowers-decor">
+                    <img src="flowers.png" alt="Flower Decor" class="flower-img">
+                </div>
+                <div class="stats-overview" id="stats-overview">
+                    <div class="stat-card">
+                        <span class="label">นักเรียนทั้งหมด</span>
+                        <span class="value" id="total-students">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="label">คะแนนเฉลี่ย</span>
+                        <span class="value" id="average-score">0.0</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="controls">
+                <button id="add-student-btn" class="btn btn-primary">
+                    <span class="icon">+</span> เพิ่มนักเรียนใหม่
+                </button>
+                <div class="search-box">
+                    <input type="text" id="student-search" placeholder="ค้นหาชื่อนักเรียน...">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </section>
+
+            <section class="student-list-container">
+                <div class="table-responsive">
+                    <table id="student-table">
+                        <thead>
+                            <tr>
+                                <th>เลขที่</th>
+                                <th>ชื่อ-นามสกุล</th>
+                                <th>การอ่าน (20)</th>
+                                <th>การเขียน (20)</th>
+                                <th>ฟัง/พูด (20)</th>
+                                <th>วรรณคดี (20)</th>
+                                <th>หลักภาษา (20)</th>
+                                <th>รวม (100)</th>
+                                <th>เกรด</th>
+                                <th>จัดการ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-body">
+                            <!-- Student rows will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal for Adding/Editing Student -->
+        <div id="student-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">เพิ่มข้อมูลนักเรียน</h2>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <form id="student-form">
+                    <input type="hidden" id="student-id">
+                    <div class="form-group row">
+                        <div class="col">
+                            <label for="student-no">เลขที่</label>
+                            <input type="number" id="student-no" required min="1">
+                        </div>
+                        <div class="col">
+                            <label for="student-name">ชื่อ-นามสกุล</label>
+                            <input type="text" id="student-name" required placeholder="เด็กชาย/ไทย รักชาติ">
+                        </div>
+                    </div>
+                    <div class="score-inputs">
+                        <h3>คะแนนแยกตามส่วน (เต็ม 20)</h3>
+                        <div class="score-grid">
+                            <div class="form-group">
+                                <label for="score-reading">การอ่าน</label>
+                                <input type="number" id="score-reading" min="0" max="20" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="score-writing">การเขียน</label>
+                                <input type="number" id="score-writing" min="0" max="20" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="score-listening">การฟัง/พูด</label>
+                                <input type="number" id="score-listening" min="0" max="20" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="score-literature">วรรณคดี</label>
+                                <input type="number" id="score-literature" min="0" max="20" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="score-grammar">หลักภาษา</label>
+                                <input type="number" id="score-grammar" min="0" max="20" value="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-submit">บันทึกข้อมูล</button>
+                        <button type="button" class="btn btn-cancel close-modal">ยกเลิก</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
